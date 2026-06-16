@@ -1,23 +1,22 @@
-from transformers import pipeline
+from langchain_community.llms import Ollama
 
-classifier = pipeline(
-    "zero-shot-classification",
-    model="facebook/bart-large-mnli"
-)
+llm = Ollama(model="llama3.2:3b")
 
 LABELS = [
-    "politics",
-    "health",
-    "economy",
-    "sports",
-    "technology",
-    "science",
-    "entertainment",
-    "crime & safety",
-    "general"
+    "politics","health","economy","sports",
+    "technology","science","entertainment",
+    "crime & safety","general"
 ]
 
-
 def classify(text: str) -> str:
-    result = classifier(text, LABELS)
-    return result["labels"][0]
+    prompt = f"""
+Classify text into ONE category:
+
+{", ".join(LABELS)}
+
+Text:
+{text}
+
+Return only category name.
+"""
+    return llm.invoke(prompt).strip().lower()
