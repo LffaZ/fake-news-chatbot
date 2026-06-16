@@ -5,3 +5,4 @@ langchain-community
 faiss-cpu
 ollama
 python-dotenv
+boto3
