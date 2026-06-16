@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environment
+venv/
+.env/
+.venv/
+.env
+
+# Django
+db.sqlite3
+media/
+staticfiles/
+
+# Migrations (opsional — biasanya TIDAK di-ignore)
+# kalau mau tetap aman, jangan ignore migrations
+migrations/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+
+# Logs
+*.log
+
+faiss_index/
