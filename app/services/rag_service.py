@@ -1,12 +1,10 @@
 from langchain_community.vectorstores import FAISS
-from langchain_community.embeddings import HuggingFaceEmbeddings
+from langchain_community.embeddings import OllamaEmbeddings
 from langchain_community.llms import Ollama
 
 llm = Ollama(model="llama3.2:3b")
 
-embedding = HuggingFaceEmbeddings(
-    model_name="sentence-transformers/all-MiniLM-L6-v2"
-)
+embedding = OllamaEmbeddings(model="llama3")
 
 vectorstore = FAISS.load_local(
     "faiss_index",
